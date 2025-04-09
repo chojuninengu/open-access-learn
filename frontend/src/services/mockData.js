@@ -167,302 +167,164 @@ export const mockData = {
         ]
     },
     videos: {
-        'Cell Biology': [
+        'Mathematics': [
             {
-                id: 'cell-bio-1',
-                title: 'GCE O Level Biology - Cell Structure and Function',
-                description: 'Complete lesson on cell structure and function for Cameroon GCE O Level Biology',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
+                id: 'video1',
+                title: 'Introduction to Algebra',
+                description: 'Basic concepts of algebra and solving equations',
+                thumbnail: 'https://i.ytimg.com/vi/NybHckSEQBI/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/NybHckSEQBI',
                 duration: '15:30',
-                viewCount: '2.5K views'
+                views: '1.2M',
+                channel: 'Math Academy'
             },
             {
-                id: 'cell-bio-2',
-                title: 'GCE Biology - Cell Organelles Explained',
-                description: 'Detailed explanation of cell organelles for Cameroon GCE Biology students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '18:45',
-                viewCount: '3.2K views'
-            }
-        ],
-        'Genetics': [
+                id: 'video2',
+                title: 'Trigonometry Basics',
+                description: 'Understanding sine, cosine, and tangent',
+                thumbnail: 'https://i.ytimg.com/vi/Jsiy4TxgIME/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/Jsiy4TxgIME',
+                duration: '20:15',
+                views: '850K',
+                channel: 'Math Made Easy'
+            },
             {
-                id: 'genetics-1',
-                title: 'GCE O Level Biology - Genetics and Inheritance',
-                description: 'Understanding genetics and inheritance patterns for Cameroon GCE Biology',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '20:20',
-                viewCount: '4.1K views'
-            }
-        ],
-        'Ecology': [
-            {
-                id: 'ecology-1',
-                title: 'GCE Biology - Ecology and Ecosystems',
-                description: 'Complete lesson on ecology and ecosystems for Cameroon GCE Biology students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '22:15',
-                viewCount: '3.8K views'
-            }
-        ],
-        'Human Biology': [
-            {
-                id: 'human-bio-1',
-                title: 'GCE O Level Biology - Human Anatomy',
-                description: 'Detailed study of human anatomy for Cameroon GCE Biology students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '25:30',
-                viewCount: '5.2K views'
-            }
-        ],
-        'Plant Biology': [
-            {
-                id: 'plant-bio-1',
-                title: 'GCE Biology - Plant Structure and Function',
-                description: 'Understanding plant biology for Cameroon GCE Biology students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '19:45',
-                viewCount: '3.7K views'
-            }
-        ],
-        'Comprehension': [
-            {
-                id: 'comp-1',
-                title: 'GCE English - Reading Comprehension Techniques',
-                description: 'Effective strategies for GCE English comprehension questions',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '17:30',
-                viewCount: '3.1K views'
-            }
-        ],
-        'Grammar': [
-            {
-                id: 'grammar-1',
-                title: 'GCE English - Grammar Rules and Usage',
-                description: 'Essential grammar rules for Cameroon GCE English students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '21:20',
-                viewCount: '4.3K views'
-            }
-        ],
-        'Composition': [
-            {
-                id: 'comp-1',
-                title: 'GCE English - Essay Writing Guide',
-                description: 'Step-by-step guide to writing GCE English essays',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '23:15',
-                viewCount: '4.8K views'
-            }
-        ],
-        'Literature': [
-            {
-                id: 'lit-1',
-                title: 'GCE English Literature - Text Analysis',
-                description: 'How to analyze literature texts for Cameroon GCE English',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
+                id: 'video3',
+                title: 'Calculus Fundamentals',
+                description: 'Introduction to derivatives and integrals',
+                thumbnail: 'https://i.ytimg.com/vi/0T0QrF1QYhM/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/0T0QrF1QYhM',
                 duration: '25:45',
-                viewCount: '3.9K views'
+                views: '1.5M',
+                channel: 'Advanced Mathematics'
             }
         ],
-        'Cameroon History': [
+        'Physics': [
             {
-                id: 'hist-1',
-                title: 'GCE History - Cameroon History Overview',
-                description: 'Complete overview of Cameroon history for GCE students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '30:30',
-                viewCount: '6.5K views'
+                id: 'video4',
+                title: 'Newton\'s Laws of Motion',
+                description: 'Understanding the fundamental laws of physics',
+                thumbnail: 'https://i.ytimg.com/vi/kKKM8Y-u7ds/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/kKKM8Y-u7ds',
+                duration: '18:20',
+                views: '2.1M',
+                channel: 'Physics World'
+            },
+            {
+                id: 'video5',
+                title: 'Electricity and Magnetism',
+                description: 'Basic principles of electromagnetism',
+                thumbnail: 'https://i.ytimg.com/vi/1xQb1yVB3TU/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/1xQb1yVB3TU',
+                duration: '22:10',
+                views: '1.8M',
+                channel: 'Physics Explained'
+            },
+            {
+                id: 'video6',
+                title: 'Quantum Mechanics Basics',
+                description: 'Introduction to quantum physics concepts',
+                thumbnail: 'https://i.ytimg.com/vi/7RmBHh1Xj2Y/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/7RmBHh1Xj2Y',
+                duration: '30:00',
+                views: '1.3M',
+                channel: 'Quantum Physics Channel'
             }
         ],
-        'African History': [
+        'Chemistry': [
             {
-                id: 'hist-2',
-                title: 'GCE History - African History Topics',
-                description: 'Key events in African history for Cameroon GCE students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '28:15',
-                viewCount: '5.8K views'
+                id: 'video7',
+                title: 'Atomic Structure',
+                description: 'Understanding atoms and their components',
+                thumbnail: 'https://i.ytimg.com/vi/1p9DwqqqOUM/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/1p9DwqqqOUM',
+                duration: '16:45',
+                views: '1.6M',
+                channel: 'Chemistry Lab'
+            },
+            {
+                id: 'video8',
+                title: 'Chemical Reactions',
+                description: 'Types of chemical reactions and equations',
+                thumbnail: 'https://i.ytimg.com/vi/75p-N5YK6V8/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/75p-N5YK6V8',
+                duration: '19:30',
+                views: '1.4M',
+                channel: 'Chemistry Explained'
+            },
+            {
+                id: 'video9',
+                title: 'Organic Chemistry Basics',
+                description: 'Introduction to carbon compounds',
+                thumbnail: 'https://i.ytimg.com/vi/B_ketdzJtY8/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/B_ketdzJtY8',
+                duration: '24:15',
+                views: '1.1M',
+                channel: 'Organic Chemistry Tutor'
             }
         ],
-        'World History': [
+        'English': [
             {
-                id: 'hist-3',
-                title: 'GCE History - World History Topics',
-                description: 'Major world history events for Cameroon GCE students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '32:40',
-                viewCount: '7.2K views'
+                id: 'video10',
+                title: 'Grammar Fundamentals',
+                description: 'Essential grammar rules and usage',
+                thumbnail: 'https://i.ytimg.com/vi/8Gd0RU4uP_0/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/8Gd0RU4uP_0',
+                duration: '17:20',
+                views: '2.3M',
+                channel: 'English Grammar'
+            },
+            {
+                id: 'video11',
+                title: 'Essay Writing Techniques',
+                description: 'How to write effective essays',
+                thumbnail: 'https://i.ytimg.com/vi/VMlXxkJ9K2s/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/VMlXxkJ9K2s',
+                duration: '21:45',
+                views: '1.9M',
+                channel: 'Writing Skills'
+            },
+            {
+                id: 'video12',
+                title: 'Reading Comprehension',
+                description: 'Strategies for better reading and understanding',
+                thumbnail: 'https://i.ytimg.com/vi/0xqkI1D8F24/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/0xqkI1D8F24',
+                duration: '18:30',
+                views: '1.7M',
+                channel: 'English Learning'
             }
         ],
-        'Advanced Algebra': [
+        'Biology': [
             {
-                id: 'alg-1',
-                title: 'GCE A Level Mathematics - Complex Numbers',
-                description: 'Advanced algebra concepts for Cameroon GCE A Level Mathematics',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '35:15',
-                viewCount: '5.8K views'
-            }
-        ],
-        'Calculus': [
+                id: 'video13',
+                title: 'Cell Biology',
+                description: 'Understanding cell structure and function',
+                thumbnail: 'https://i.ytimg.com/vi/URUJD5NEXC8/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/URUJD5NEXC8',
+                duration: '20:00',
+                views: '2.5M',
+                channel: 'Biology Explained'
+            },
             {
-                id: 'calc-1',
-                title: 'GCE A Level Mathematics - Calculus',
-                description: 'Complete calculus course for Cameroon GCE A Level Mathematics',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '40:20',
-                viewCount: '6.6K views'
-            }
-        ],
-        'Mechanics': [
+                id: 'video14',
+                title: 'Genetics and DNA',
+                description: 'Introduction to genetic principles',
+                thumbnail: 'https://i.ytimg.com/vi/8kK2zwjRV0M/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/8kK2zwjRV0M',
+                duration: '22:15',
+                views: '2.1M',
+                channel: 'Genetics Lab'
+            },
             {
-                id: 'mech-1',
-                title: 'GCE A Level Mathematics - Mechanics',
-                description: 'Advanced mechanics for Cameroon GCE A Level Mathematics',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '38:45',
-                viewCount: '5.9K views'
-            }
-        ],
-        'Statistics': [
-            {
-                id: 'stats-1',
-                title: 'GCE A Level Mathematics - Statistics',
-                description: 'Advanced statistics for Cameroon GCE A Level Mathematics',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '33:30',
-                viewCount: '5.2K views'
-            }
-        ],
-        'Electricity and Magnetism': [
-            {
-                id: 'em-1',
-                title: 'GCE A Level Physics - Electricity and Magnetism',
-                description: 'Complete course on electricity and magnetism for Cameroon GCE A Level Physics',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '45:15',
-                viewCount: '7.1K views'
-            }
-        ],
-        'Modern Physics': [
-            {
-                id: 'mod-phys-1',
-                title: 'GCE A Level Physics - Modern Physics',
-                description: 'Understanding modern physics concepts for Cameroon GCE A Level Physics',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '50:20',
-                viewCount: '8.2K views'
-            }
-        ],
-        'Thermodynamics': [
-            {
-                id: 'thermo-1',
-                title: 'GCE A Level Physics - Thermodynamics',
-                description: 'Advanced thermodynamics for Cameroon GCE A Level Physics students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '42:45',
-                viewCount: '6.8K views'
-            }
-        ],
-        'Physical Chemistry': [
-            {
-                id: 'phys-chem-1',
-                title: 'GCE A Level Chemistry - Physical Chemistry',
-                description: 'Complete physical chemistry course for Cameroon GCE A Level Chemistry',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '40:30',
-                viewCount: '6.4K views'
-            }
-        ],
-        'Inorganic Chemistry': [
-            {
-                id: 'inorg-chem-1',
-                title: 'GCE A Level Chemistry - Inorganic Chemistry',
-                description: 'Advanced inorganic chemistry for Cameroon GCE A Level Chemistry students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '38:20',
-                viewCount: '5.7K views'
-            }
-        ],
-        'Organic Chemistry': [
-            {
-                id: 'org-chem-1',
-                title: 'GCE A Level Chemistry - Organic Chemistry',
-                description: 'Complete organic chemistry course for Cameroon GCE A Level Chemistry',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '47:15',
-                viewCount: '7.3K views'
-            }
-        ],
-        'Analytical Chemistry': [
-            {
-                id: 'anal-chem-1',
-                title: 'GCE A Level Chemistry - Analytical Chemistry',
-                description: 'Advanced analytical chemistry for Cameroon GCE A Level Chemistry students',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/URUJD5NEXC8',
-                duration: '41:40',
-                viewCount: '6.1K views'
-            }
-        ],
-        'Computer Systems': [
-            {
-                id: 'comp-sys-1',
-                title: 'GCE A Level Computer Science - Computer Systems',
-                description: 'Complete course on computer systems for Cameroon GCE A Level Computer Science',
-                thumbnail: 'https://via.placeholder.com/320x180.png',
-                channelTitle: 'MINESEC Distance Learning',
-                embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                duration: '45:20',
-                viewCount: '7.5K views'
+                id: 'video15',
+                title: 'Human Anatomy',
+                description: 'Overview of human body systems',
+                thumbnail: 'https://i.ytimg.com/vi/0fT5G6TWdE8/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/0fT5G6TWdE8',
+                duration: '25:30',
+                views: '1.8M',
+                channel: 'Anatomy Channel'
             }
         ]
     }
