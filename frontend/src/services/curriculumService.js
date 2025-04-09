@@ -29,7 +29,7 @@ export const curriculumService = {
                         description: 'This is a sample video about ' + topic,
                         thumbnail: 'https://via.placeholder.com/320x180.png',
                         channelTitle: 'MINESEC Distance Learning',
-                        embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                        embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
                         duration: '10:00',
                         viewCount: '1K views'
                     }
