@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { curriculumService } from '../services/curriculumService';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Curriculum = () => {
     const { t } = useTranslation();
@@ -188,8 +189,9 @@ const Curriculum = () => {
 
             {/* Loading State */}
             {loading && (
-                <div className="text-center py-4">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+                <div className="text-center py-8">
+                    <LoadingSpinner size="lg" />
+                    <p className="mt-4 text-gray-600">{t('loading')}</p>
                 </div>
             )}
 
