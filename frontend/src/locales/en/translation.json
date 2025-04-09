@@ -13,5 +13,11 @@
         "fetching_subjects": "Error fetching subjects. Please try again later.",
         "fetching_topics": "Error fetching topics. Please try again later.",
         "fetching_videos": "Error fetching videos. Please try again later."
+    },
+    "loading": "Loading content...",
+    "common": {
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "retry": "Retry"
     }
 } 
