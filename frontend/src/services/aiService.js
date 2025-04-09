@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_BASE_URL } from './api';
+import { API_BASE_URL, API_ENDPOINTS } from './api';
 
 /**
  * Service for handling AI interactions in the platform
@@ -14,7 +14,7 @@ export const aiService = {
      */
     async getAIResponse(question, subject, level) {
         try {
-            const response = await axios.post(`${API_BASE_URL}/ai/chat`, {
+            const response = await axios.post(`${API_BASE_URL}${API_ENDPOINTS.AI_CHAT}`, {
                 question,
                 subject,
                 level,
@@ -39,7 +39,7 @@ export const aiService = {
      */
     async getLearningRecommendations(subject, level, topics) {
         try {
-            const response = await axios.post(`${API_BASE_URL}/ai/recommendations`, {
+            const response = await axios.post(`${API_BASE_URL}${API_ENDPOINTS.AI_RECOMMENDATIONS}`, {
                 subject,
                 level,
                 topics,
@@ -63,7 +63,7 @@ export const aiService = {
      */
     async getPracticeQuestions(topic, difficulty) {
         try {
-            const response = await axios.post(`${API_BASE_URL}/ai/practice`, {
+            const response = await axios.post(`${API_BASE_URL}${API_ENDPOINTS.AI_PRACTICE}`, {
                 topic,
                 difficulty,
                 format: 'multiple_choice',
