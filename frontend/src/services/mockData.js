@@ -170,161 +170,161 @@ export const mockData = {
         'Mathematics': [
             {
                 id: 'video1',
-                title: 'Introduction to Algebra',
-                description: 'Basic concepts of algebra and solving equations',
+                title: 'GCE Mathematics: Algebra and Equations',
+                description: 'Comprehensive guide to solving algebraic equations for GCE exams',
                 thumbnail: 'https://i.ytimg.com/vi/NybHckSEQBI/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/NybHckSEQBI',
                 duration: '15:30',
                 views: '1.2M',
-                channel: 'Math Academy'
+                channel: 'GCE Math Academy'
             },
             {
                 id: 'video2',
-                title: 'Trigonometry Basics',
-                description: 'Understanding sine, cosine, and tangent',
+                title: 'GCE Trigonometry: Complete Guide',
+                description: 'Master trigonometric concepts for GCE Mathematics',
                 thumbnail: 'https://i.ytimg.com/vi/Jsiy4TxgIME/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/Jsiy4TxgIME',
                 duration: '20:15',
                 views: '850K',
-                channel: 'Math Made Easy'
+                channel: 'GCE Math Made Easy'
             },
             {
                 id: 'video3',
-                title: 'Calculus Fundamentals',
-                description: 'Introduction to derivatives and integrals',
+                title: 'GCE Calculus: Differentiation and Integration',
+                description: 'Advanced calculus topics for GCE Advanced Level',
                 thumbnail: 'https://i.ytimg.com/vi/0T0QrF1QYhM/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/0T0QrF1QYhM',
                 duration: '25:45',
                 views: '1.5M',
-                channel: 'Advanced Mathematics'
+                channel: 'GCE Advanced Mathematics'
             }
         ],
         'Physics': [
             {
                 id: 'video4',
-                title: 'Newton\'s Laws of Motion',
-                description: 'Understanding the fundamental laws of physics',
+                title: 'GCE Physics: Mechanics and Motion',
+                description: 'Complete guide to mechanics for GCE Physics exams',
                 thumbnail: 'https://i.ytimg.com/vi/kKKM8Y-u7ds/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/kKKM8Y-u7ds',
                 duration: '18:20',
                 views: '2.1M',
-                channel: 'Physics World'
+                channel: 'GCE Physics World'
             },
             {
                 id: 'video5',
-                title: 'Electricity and Magnetism',
-                description: 'Basic principles of electromagnetism',
+                title: 'GCE Physics: Electricity and Circuits',
+                description: 'Understanding electrical circuits for GCE exams',
                 thumbnail: 'https://i.ytimg.com/vi/1xQb1yVB3TU/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/1xQb1yVB3TU',
                 duration: '22:10',
                 views: '1.8M',
-                channel: 'Physics Explained'
+                channel: 'GCE Physics Explained'
             },
             {
                 id: 'video6',
-                title: 'Quantum Mechanics Basics',
-                description: 'Introduction to quantum physics concepts',
+                title: 'GCE Physics: Waves and Optics',
+                description: 'Comprehensive guide to waves and optics for GCE',
                 thumbnail: 'https://i.ytimg.com/vi/7RmBHh1Xj2Y/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/7RmBHh1Xj2Y',
                 duration: '30:00',
                 views: '1.3M',
-                channel: 'Quantum Physics Channel'
+                channel: 'GCE Physics Channel'
             }
         ],
         'Chemistry': [
             {
                 id: 'video7',
-                title: 'Atomic Structure',
-                description: 'Understanding atoms and their components',
+                title: 'GCE Chemistry: Atomic Structure',
+                description: 'Understanding atomic structure for GCE Chemistry',
                 thumbnail: 'https://i.ytimg.com/vi/1p9DwqqqOUM/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/1p9DwqqqOUM',
                 duration: '16:45',
                 views: '1.6M',
-                channel: 'Chemistry Lab'
+                channel: 'GCE Chemistry Lab'
             },
             {
                 id: 'video8',
-                title: 'Chemical Reactions',
-                description: 'Types of chemical reactions and equations',
+                title: 'GCE Chemistry: Chemical Reactions',
+                description: 'Types of chemical reactions for GCE exams',
                 thumbnail: 'https://i.ytimg.com/vi/75p-N5YK6V8/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/75p-N5YK6V8',
                 duration: '19:30',
                 views: '1.4M',
-                channel: 'Chemistry Explained'
+                channel: 'GCE Chemistry Explained'
             },
             {
                 id: 'video9',
-                title: 'Organic Chemistry Basics',
-                description: 'Introduction to carbon compounds',
+                title: 'GCE Chemistry: Organic Chemistry',
+                description: 'Complete guide to organic chemistry for GCE',
                 thumbnail: 'https://i.ytimg.com/vi/B_ketdzJtY8/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/B_ketdzJtY8',
                 duration: '24:15',
                 views: '1.1M',
-                channel: 'Organic Chemistry Tutor'
-            }
-        ],
-        'English': [
-            {
-                id: 'video10',
-                title: 'Grammar Fundamentals',
-                description: 'Essential grammar rules and usage',
-                thumbnail: 'https://i.ytimg.com/vi/8Gd0RU4uP_0/maxresdefault.jpg',
-                url: 'https://www.youtube.com/embed/8Gd0RU4uP_0',
-                duration: '17:20',
-                views: '2.3M',
-                channel: 'English Grammar'
-            },
-            {
-                id: 'video11',
-                title: 'Essay Writing Techniques',
-                description: 'How to write effective essays',
-                thumbnail: 'https://i.ytimg.com/vi/VMlXxkJ9K2s/maxresdefault.jpg',
-                url: 'https://www.youtube.com/embed/VMlXxkJ9K2s',
-                duration: '21:45',
-                views: '1.9M',
-                channel: 'Writing Skills'
-            },
-            {
-                id: 'video12',
-                title: 'Reading Comprehension',
-                description: 'Strategies for better reading and understanding',
-                thumbnail: 'https://i.ytimg.com/vi/0xqkI1D8F24/maxresdefault.jpg',
-                url: 'https://www.youtube.com/embed/0xqkI1D8F24',
-                duration: '18:30',
-                views: '1.7M',
-                channel: 'English Learning'
+                channel: 'GCE Organic Chemistry'
             }
         ],
         'Biology': [
             {
-                id: 'video13',
-                title: 'Cell Biology',
-                description: 'Understanding cell structure and function',
+                id: 'video10',
+                title: 'GCE Biology: Cell Structure',
+                description: 'Understanding cell biology for GCE exams',
                 thumbnail: 'https://i.ytimg.com/vi/URUJD5NEXC8/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/URUJD5NEXC8',
                 duration: '20:00',
                 views: '2.5M',
-                channel: 'Biology Explained'
+                channel: 'GCE Biology Explained'
             },
             {
-                id: 'video14',
-                title: 'Genetics and DNA',
-                description: 'Introduction to genetic principles',
+                id: 'video11',
+                title: 'GCE Biology: Genetics and DNA',
+                description: 'Complete guide to genetics for GCE Biology',
                 thumbnail: 'https://i.ytimg.com/vi/8kK2zwjRV0M/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/8kK2zwjRV0M',
                 duration: '22:15',
                 views: '2.1M',
-                channel: 'Genetics Lab'
+                channel: 'GCE Genetics Lab'
             },
             {
-                id: 'video15',
-                title: 'Human Anatomy',
-                description: 'Overview of human body systems',
+                id: 'video12',
+                title: 'GCE Biology: Human Anatomy',
+                description: 'Understanding human anatomy for GCE exams',
                 thumbnail: 'https://i.ytimg.com/vi/0fT5G6TWdE8/maxresdefault.jpg',
                 url: 'https://www.youtube.com/embed/0fT5G6TWdE8',
                 duration: '25:30',
                 views: '1.8M',
-                channel: 'Anatomy Channel'
+                channel: 'GCE Anatomy Channel'
+            }
+        ],
+        'English': [
+            {
+                id: 'video13',
+                title: 'GCE English: Essay Writing',
+                description: 'Master essay writing for GCE English exams',
+                thumbnail: 'https://i.ytimg.com/vi/8Gd0RU4uP_0/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/8Gd0RU4uP_0',
+                duration: '17:20',
+                views: '2.3M',
+                channel: 'GCE English Grammar'
+            },
+            {
+                id: 'video14',
+                title: 'GCE English: Comprehension Skills',
+                description: 'Improve reading comprehension for GCE',
+                thumbnail: 'https://i.ytimg.com/vi/VMlXxkJ9K2s/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/VMlXxkJ9K2s',
+                duration: '21:45',
+                views: '1.9M',
+                channel: 'GCE Writing Skills'
+            },
+            {
+                id: 'video15',
+                title: 'GCE English: Literature Analysis',
+                description: 'Analyzing literature for GCE English',
+                thumbnail: 'https://i.ytimg.com/vi/0xqkI1D8F24/maxresdefault.jpg',
+                url: 'https://www.youtube.com/embed/0xqkI1D8F24',
+                duration: '18:30',
+                views: '1.7M',
+                channel: 'GCE English Learning'
             }
         ]
     }
