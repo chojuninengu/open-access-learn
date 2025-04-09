@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { curriculumService } from '../services/curriculumService';
 import LoadingSpinner from '../components/LoadingSpinner';
 import RetryButton from '../components/RetryButton';
 
+/**
+ * Curriculum page component that displays educational content and videos.
+ * @component
+ * @returns {JSX.Element} The Curriculum page component
+ */
 const Curriculum = () => {
     const { t } = useTranslation();
+    
+    // State management
     const [level, setLevel] = useState('');
     const [subject, setSubject] = useState('');
     const [subjects, setSubjects] = useState([]);
@@ -18,58 +26,98 @@ const Curriculum = () => {
 
     // Fetch subjects when level changes
     useEffect(() => {
-        if (level) {
+        const fetchSubjects = async () => {
+            if (!level) return;
+            
             setLoading(true);
-            curriculumService.getSubjectsByLevel(level)
-                .then(data => {
-                    setSubjects(data);
-                    setError(null);
-                })
-                .catch(err => {
-                    setError(t('error.fetching_subjects'));
-                    console.error(err);
-                })
-                .finally(() => setLoading(false));
-        }
+            try {
+                const data = await curriculumService.getSubjectsByLevel(level);
+                setSubjects(data);
+                setError(null);
+            } catch (err) {
+                setError(t('error.fetching_subjects'));
+                console.error('Error fetching subjects:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchSubjects();
     }, [level, t]);
 
     // Fetch topics when subject changes
     useEffect(() => {
-        if (level && subject) {
+        const fetchTopics = async () => {
+            if (!level || !subject) return;
+            
             setLoading(true);
-            curriculumService.getTopicsBySubject(level, subject)
-                .then(data => {
-                    setTopics(data);
-                    setError(null);
-                })
-                .catch(err => {
-                    setError(t('error.fetching_topics'));
-                    console.error(err);
-                })
-                .finally(() => setLoading(false));
-        }
+            try {
+                const data = await curriculumService.getTopicsBySubject(level, subject);
+                setTopics(data);
+                setError(null);
+            } catch (err) {
+                setError(t('error.fetching_topics'));
+                console.error('Error fetching topics:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTopics();
     }, [level, subject, t]);
 
     // Fetch videos when topic is selected
     useEffect(() => {
-        if (selectedTopic) {
+        const fetchVideos = async () => {
+            if (!selectedTopic) return;
+            
             setLoading(true);
-            curriculumService.getRecommendedVideos(selectedTopic.name, level)
-                .then(data => {
-                    setVideos(data);
-                    setError(null);
-                    // Select the first video by default
-                    if (data.length > 0) {
-                        setSelectedVideo(data[0]);
-                    }
-                })
-                .catch(err => {
-                    setError(t('error.fetching_videos'));
-                    console.error(err);
-                })
-                .finally(() => setLoading(false));
-        }
+            try {
+                const data = await curriculumService.getRecommendedVideos(selectedTopic.name, level);
+                setVideos(data);
+                setError(null);
+                if (data.length > 0) {
+                    setSelectedVideo(data[0]);
+                }
+            } catch (err) {
+                setError(t('error.fetching_videos'));
+                console.error('Error fetching videos:', err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchVideos();
     }, [selectedTopic, level, t]);
+
+    // Event handlers
+    const handleLevelChange = (e) => {
+        setLevel(e.target.value);
+        setSubject('');
+        setSelectedTopic(null);
+        setSelectedVideo(null);
+    };
+
+    const handleSubjectChange = (e) => {
+        setSubject(e.target.value);
+        setSelectedTopic(null);
+        setSelectedVideo(null);
+    };
+
+    const handleTopicSelect = (topic) => {
+        setSelectedTopic(topic);
+    };
+
+    const handleVideoSelect = (video) => {
+        setSelectedVideo(video);
+    };
+
+    const handleRetry = () => {
+        if (selectedTopic) {
+            setSelectedTopic(null);
+            setSelectedTopic(selectedTopic);
+        }
+    };
 
     return (
         <div className="container mx-auto px-4 py-8">
@@ -78,13 +126,17 @@ const Curriculum = () => {
             {/* Level and Subject Selection */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label 
+                        htmlFor="level-select"
+                        className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                         {t('curriculum.select_level')}
                     </label>
                     <select
-                        className="w-full p-2 border rounded"
+                        id="level-select"
+                        className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={level}
-                        onChange={(e) => setLevel(e.target.value)}
+                        onChange={handleLevelChange}
                     >
                         <option value="">{t('curriculum.select_level')}</option>
                         <option value="ordinary">{t('curriculum.ordinary_level')}</option>
@@ -94,13 +146,17 @@ const Curriculum = () => {
 
                 {level && (
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label 
+                            htmlFor="subject-select"
+                            className="block text-sm font-medium text-gray-700 mb-2"
+                        >
                             {t('curriculum.select_subject')}
                         </label>
                         <select
-                            className="w-full p-2 border rounded"
+                            id="subject-select"
+                            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                             value={subject}
-                            onChange={(e) => setSubject(e.target.value)}
+                            onChange={handleSubjectChange}
                         >
                             <option value="">{t('curriculum.select_subject')}</option>
                             {subjects.map((sub) => (
@@ -123,10 +179,11 @@ const Curriculum = () => {
                             {topics.map((topic) => (
                                 <div
                                     key={topic.id}
-                                    className={`p-4 border rounded cursor-pointer ${
-                                        selectedTopic?.id === topic.id ? 'bg-blue-50 border-blue-500' : ''
-                                    }`}
-                                    onClick={() => setSelectedTopic(topic)}
+                                    className={`p-4 border rounded cursor-pointer transition-colors
+                                        ${selectedTopic?.id === topic.id 
+                                            ? 'bg-blue-50 border-blue-500' 
+                                            : 'hover:bg-gray-50'}`}
+                                    onClick={() => handleTopicSelect(topic)}
                                 >
                                     <h3 className="font-medium">{topic.name}</h3>
                                     <p className="text-sm text-gray-600">{topic.description}</p>
@@ -150,7 +207,7 @@ const Curriculum = () => {
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
-                                    ></iframe>
+                                    />
                                 </div>
                                 <div className="mt-4">
                                     <h3 className="text-lg font-medium">{selectedVideo.title}</h3>
@@ -167,10 +224,11 @@ const Curriculum = () => {
                             {videos.map((video) => (
                                 <div
                                     key={video.id}
-                                    className={`flex gap-4 p-3 border rounded cursor-pointer ${
-                                        selectedVideo?.id === video.id ? 'bg-blue-50 border-blue-500' : ''
-                                    }`}
-                                    onClick={() => setSelectedVideo(video)}
+                                    className={`flex gap-4 p-3 border rounded cursor-pointer transition-colors
+                                        ${selectedVideo?.id === video.id 
+                                            ? 'bg-blue-50 border-blue-500' 
+                                            : 'hover:bg-gray-50'}`}
+                                    onClick={() => handleVideoSelect(video)}
                                 >
                                     <img
                                         src={video.thumbnail}
@@ -200,12 +258,7 @@ const Curriculum = () => {
             {error && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded flex flex-col items-center">
                     <p className="mb-4">{error}</p>
-                    <RetryButton onClick={() => {
-                        if (selectedTopic) {
-                            setSelectedTopic(null);
-                            setSelectedTopic(selectedTopic);
-                        }
-                    }} />
+                    <RetryButton onClick={handleRetry} />
                 </div>
             )}
         </div>
