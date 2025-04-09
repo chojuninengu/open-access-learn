@@ -1,0 +1,22 @@
+categories:
+  - name: "Rust Programming"
+    path: "rust"
+    description: "Learn the Rust programming language from basics to advanced concepts"
+    lessons:
+      - title: "Getting Started with Rust"
+        path: "rust/getting-started.md"
+        difficulty: "beginner"
+      - title: "Ownership and Borrowing"
+        path: "rust/ownership.md"
+        difficulty: "intermediate"
+
+  - name: "Web Development"
+    path: "html"
+    description: "Learn HTML, CSS, and modern web development"
+    lessons:
+      - title: "HTML Basics"
+        path: "html/basics.md"
+        difficulty: "beginner"
+      - title: "CSS Fundamentals"
+        path: "html/css-fundamentals.md"
+        difficulty: "beginner"
