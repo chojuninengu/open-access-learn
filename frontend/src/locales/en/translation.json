@@ -1,0 +1,17 @@
+{
+    "curriculum": {
+        "title": "Curriculum",
+        "select_level": "Select Level",
+        "ordinary_level": "Ordinary Level",
+        "advanced_level": "Advanced Level",
+        "select_subject": "Select Subject",
+        "topics": "Topics",
+        "recommended_videos": "Recommended Videos",
+        "watch_video": "Watch Video"
+    },
+    "error": {
+        "fetching_subjects": "Error fetching subjects. Please try again later.",
+        "fetching_topics": "Error fetching topics. Please try again later.",
+        "fetching_videos": "Error fetching videos. Please try again later."
+    }
+} 
