@@ -22,13 +22,16 @@ export const curriculumService = {
         try {
             if (!YOUTUBE_API_KEY) {
                 // Return mock video data if no API key is available
-                return [
+                return mockData.videos[topic] || [
                     {
                         id: 'mock-1',
                         title: 'Sample Video 1',
                         description: 'This is a sample video about ' + topic,
                         thumbnail: 'https://via.placeholder.com/320x180.png',
-                        channelTitle: 'MINESEC Distance Learning'
+                        channelTitle: 'MINESEC Distance Learning',
+                        embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                        duration: '10:00',
+                        viewCount: '1K views'
                     }
                 ];
             }

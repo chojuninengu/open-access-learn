@@ -165,5 +165,41 @@ export const mockData = {
             { id: 'computer-a-2', name: 'Data Structures', description: 'Data structures and algorithms' },
             { id: 'computer-a-3', name: 'Computer Systems', description: 'Advanced computer architecture' }
         ]
+    },
+    videos: {
+        'Cell Biology': [
+            {
+                id: 'cell-bio-1',
+                title: 'Introduction to Cell Biology',
+                description: 'Learn about the basic structure and function of cells',
+                thumbnail: 'https://via.placeholder.com/320x180.png',
+                channelTitle: 'MINESEC Distance Learning',
+                embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                duration: '10:30',
+                viewCount: '1.2K views'
+            },
+            {
+                id: 'cell-bio-2',
+                title: 'Cell Organelles Explained',
+                description: 'Detailed explanation of different cell organelles and their functions',
+                thumbnail: 'https://via.placeholder.com/320x180.png',
+                channelTitle: 'MINESEC Distance Learning',
+                embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                duration: '15:45',
+                viewCount: '2.5K views'
+            }
+        ],
+        'Genetics': [
+            {
+                id: 'genetics-1',
+                title: 'Basic Principles of Genetics',
+                description: 'Introduction to genetic inheritance and DNA structure',
+                thumbnail: 'https://via.placeholder.com/320x180.png',
+                channelTitle: 'MINESEC Distance Learning',
+                embedUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                duration: '12:20',
+                viewCount: '3.1K views'
+            }
+        ]
     }
 }; 

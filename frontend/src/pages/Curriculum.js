@@ -23,6 +23,8 @@ const Curriculum = () => {
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [videoLoading, setVideoLoading] = useState(false);
+    const [videoError, setVideoError] = useState(null);
 
     // Fetch subjects when level changes
     useEffect(() => {
@@ -109,7 +111,17 @@ const Curriculum = () => {
     };
 
     const handleVideoSelect = (video) => {
+        setVideoLoading(true);
+        setVideoError(null);
         setSelectedVideo(video);
+        
+        // Clear loading state after a short delay to ensure the iframe has time to load
+        const loadingTimer = setTimeout(() => {
+            setVideoLoading(false);
+        }, 1000);
+
+        // Cleanup timer on unmount or when selecting a new video
+        return () => clearTimeout(loadingTimer);
     };
 
     const handleRetry = () => {
@@ -199,19 +211,48 @@ const Curriculum = () => {
                         {/* Video Player */}
                         {selectedVideo && (
                             <div className="mb-6">
-                                <div className="relative pb-[56.25%] h-0">
-                                    <iframe
-                                        className="absolute top-0 left-0 w-full h-full"
-                                        src={selectedVideo.embedUrl}
-                                        title={selectedVideo.title}
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
+                                <div className="relative pb-[56.25%] h-0 bg-gray-100 rounded-lg overflow-hidden">
+                                    {videoLoading ? (
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <LoadingSpinner size="md" />
+                                        </div>
+                                    ) : videoError ? (
+                                        <div className="absolute inset-0 flex items-center justify-center bg-red-50">
+                                            <div className="text-center">
+                                                <p className="text-red-600 mb-2">{t('error.video_load')}</p>
+                                                <RetryButton onClick={() => handleVideoSelect(selectedVideo)} />
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <iframe
+                                            className="absolute top-0 left-0 w-full h-full"
+                                            src={selectedVideo.embedUrl}
+                                            title={selectedVideo.title}
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                            onLoad={() => setVideoLoading(false)}
+                                            onError={() => {
+                                                setVideoError(true);
+                                                setVideoLoading(false);
+                                            }}
+                                        />
+                                    )}
                                 </div>
                                 <div className="mt-4">
                                     <h3 className="text-lg font-medium">{selectedVideo.title}</h3>
-                                    <p className="text-sm text-gray-600">{selectedVideo.channelTitle}</p>
+                                    <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
+                                        <p>{selectedVideo.channelTitle}</p>
+                                        {selectedVideo.duration && (
+                                            <span>• {selectedVideo.duration}</span>
+                                        )}
+                                        {selectedVideo.viewCount && (
+                                            <span>• {selectedVideo.viewCount}</span>
+                                        )}
+                                    </div>
+                                    <p className="mt-2 text-sm text-gray-600 line-clamp-2">
+                                        {selectedVideo.description}
+                                    </p>
                                 </div>
                             </div>
                         )}
@@ -230,14 +271,24 @@ const Curriculum = () => {
                                             : 'hover:bg-gray-50'}`}
                                     onClick={() => handleVideoSelect(video)}
                                 >
-                                    <img
-                                        src={video.thumbnail}
-                                        alt={video.title}
-                                        className="w-32 h-20 object-cover rounded"
-                                    />
-                                    <div>
-                                        <h3 className="font-medium">{video.title}</h3>
-                                        <p className="text-sm text-gray-600">{video.channelTitle}</p>
+                                    <div className="relative">
+                                        <img
+                                            src={video.thumbnail}
+                                            alt={video.title}
+                                            className="w-32 h-20 object-cover rounded"
+                                        />
+                                        {video.duration && (
+                                            <span className="absolute bottom-1 right-1 bg-black bg-opacity-75 text-white text-xs px-1 rounded">
+                                                {video.duration}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-medium truncate">{video.title}</h3>
+                                        <p className="text-sm text-gray-600 truncate">{video.channelTitle}</p>
+                                        {video.viewCount && (
+                                            <p className="text-xs text-gray-500">{video.viewCount} views</p>
+                                        )}
                                     </div>
                                 </div>
                             ))}
