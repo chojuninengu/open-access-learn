@@ -1,22 +1,65 @@
 categories:
-  - name: "Rust Programming"
-    path: "rust"
-    description: "Learn the Rust programming language from basics to advanced concepts"
-    lessons:
-      - title: "Getting Started with Rust"
-        path: "rust/getting-started.md"
-        difficulty: "beginner"
-      - title: "Ownership and Borrowing"
-        path: "rust/ownership.md"
-        difficulty: "intermediate"
+  - name: "Ordinary Level"
+    path: "ordinary_level"
+    description: "GCE Ordinary Level curriculum"
+    subjects:
+      - name: "Sciences"
+        path: "ordinary_level/sciences"
+        subjects:
+          - name: "Biology"
+            path: "ordinary_level/sciences/biology"
+            lessons:
+              - title: "Respiration"
+                path: "ordinary_level/sciences/biology/respiration.md"
+                difficulty: "beginner"
+              - title: "Photosynthesis"
+                path: "ordinary_level/sciences/biology/photosynthesis.md"
+                difficulty: "beginner"
+          - name: "Physics"
+            path: "ordinary_level/sciences/physics"
+            lessons:
+              - title: "Motion"
+                path: "ordinary_level/sciences/physics/motion.md"
+                difficulty: "beginner"
+      - name: "Arts"
+        path: "ordinary_level/arts"
+        subjects:
+          - name: "English"
+            path: "ordinary_level/arts/english"
+            lessons:
+              - title: "Comprehension"
+                path: "ordinary_level/arts/english/comprehension.md"
+                difficulty: "beginner"
+              - title: "Grammar"
+                path: "ordinary_level/arts/english/grammar.md"
+                difficulty: "beginner"
 
-  - name: "Web Development"
-    path: "html"
-    description: "Learn HTML, CSS, and modern web development"
-    lessons:
-      - title: "HTML Basics"
-        path: "html/basics.md"
-        difficulty: "beginner"
-      - title: "CSS Fundamentals"
-        path: "html/css-fundamentals.md"
-        difficulty: "beginner"
+  - name: "Advanced Level"
+    path: "advanced_level"
+    description: "GCE Advanced Level curriculum"
+    subjects:
+      - name: "Sciences"
+        path: "advanced_level/sciences"
+        subjects:
+          - name: "Biology"
+            path: "advanced_level/sciences/biology"
+            lessons:
+              - title: "Cell Biology"
+                path: "advanced_level/sciences/biology/cell-biology.md"
+                difficulty: "advanced"
+      - name: "Arts"
+        path: "advanced_level/arts"
+        subjects:
+          - name: "Literature"
+            path: "advanced_level/arts/literature"
+            lessons:
+              - title: "Poetry Analysis"
+                path: "advanced_level/arts/literature/poetry-analysis.md"
+                difficulty: "advanced"
+
+languages:
+  - code: "en"
+    name: "English"
+    default: true
+  - code: "fr"
+    name: "Français"
