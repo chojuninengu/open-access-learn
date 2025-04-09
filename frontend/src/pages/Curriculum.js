@@ -1,106 +1,178 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { curriculumService } from '../services/curriculumService';
 
-function Curriculum() {
-  const { t } = useTranslation();
-  const [selectedLevel, setSelectedLevel] = useState('ordinary');
-  const [selectedStream, setSelectedStream] = useState('sciences');
+const Curriculum = () => {
+    const { t } = useTranslation();
+    const [level, setLevel] = useState('');
+    const [subject, setSubject] = useState('');
+    const [subjects, setSubjects] = useState([]);
+    const [topics, setTopics] = useState([]);
+    const [selectedTopic, setSelectedTopic] = useState(null);
+    const [videos, setVideos] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-  const subjects = {
-    ordinary: {
-      sciences: ['Biology', 'Physics', 'Chemistry', 'Mathematics'],
-      arts: ['English', 'French', 'History', 'Geography']
-    },
-    advanced: {
-      sciences: ['Biology', 'Physics', 'Chemistry', 'Mathematics', 'Computer Science'],
-      arts: ['English', 'French', 'History', 'Geography', 'Literature']
-    }
-  };
+    // Fetch subjects when level changes
+    useEffect(() => {
+        if (level) {
+            setLoading(true);
+            curriculumService.getSubjectsByLevel(level)
+                .then(data => {
+                    setSubjects(data);
+                    setError(null);
+                })
+                .catch(err => {
+                    setError(t('error.fetching_subjects'));
+                    console.error(err);
+                })
+                .finally(() => setLoading(false));
+        }
+    }, [level, t]);
 
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">{t('curriculum')}</h1>
+    // Fetch topics when subject changes
+    useEffect(() => {
+        if (level && subject) {
+            setLoading(true);
+            curriculumService.getTopicsBySubject(level, subject)
+                .then(data => {
+                    setTopics(data);
+                    setError(null);
+                })
+                .catch(err => {
+                    setError(t('error.fetching_topics'));
+                    console.error(err);
+                })
+                .finally(() => setLoading(false));
+        }
+    }, [level, subject, t]);
 
-      {/* Level Selection */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">{t('select-level')}</h2>
-        <div className="flex space-x-4">
-          <button
-            onClick={() => setSelectedLevel('ordinary')}
-            className={`px-4 py-2 rounded ${
-              selectedLevel === 'ordinary'
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-200 text-gray-700'
-            }`}
-          >
-            {t('ordinary-level')}
-          </button>
-          <button
-            onClick={() => setSelectedLevel('advanced')}
-            className={`px-4 py-2 rounded ${
-              selectedLevel === 'advanced'
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-200 text-gray-700'
-            }`}
-          >
-            {t('advanced-level')}
-          </button>
-        </div>
-      </div>
+    // Fetch videos when topic is selected
+    useEffect(() => {
+        if (selectedTopic) {
+            setLoading(true);
+            curriculumService.getRecommendedVideos(selectedTopic.name)
+                .then(data => {
+                    setVideos(data);
+                    setError(null);
+                })
+                .catch(err => {
+                    setError(t('error.fetching_videos'));
+                    console.error(err);
+                })
+                .finally(() => setLoading(false));
+        }
+    }, [selectedTopic, t]);
 
-      {/* Stream Selection */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4">{t('select-stream')}</h2>
-        <div className="flex space-x-4">
-          <button
-            onClick={() => setSelectedStream('sciences')}
-            className={`px-4 py-2 rounded ${
-              selectedStream === 'sciences'
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-200 text-gray-700'
-            }`}
-          >
-            {t('sciences')}
-          </button>
-          <button
-            onClick={() => setSelectedStream('arts')}
-            className={`px-4 py-2 rounded ${
-              selectedStream === 'arts'
-                ? 'bg-primary-600 text-white'
-                : 'bg-gray-200 text-gray-700'
-            }`}
-          >
-            {t('arts')}
-          </button>
-        </div>
-      </div>
-
-      {/* Subjects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {subjects[selectedLevel][selectedStream].map((subject) => (
-          <div
-            key={subject}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-          >
-            <h3 className="text-xl font-semibold mb-4">{subject}</h3>
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">{t('lessons')}</span>
-                <span className="font-medium">12</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-600">{t('quizzes')}</span>
-                <span className="font-medium">4</span>
-              </div>
-              <button className="w-full mt-4 bg-primary-600 text-white py-2 px-4 rounded hover:bg-primary-700">
-                {t('start-learning')}
-              </button>
+    return (
+        <div className="container mx-auto px-4 py-8">
+            <h1 className="text-3xl font-bold mb-8">{t('curriculum.title')}</h1>
+            
+            {/* Level Selection */}
+            <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {t('curriculum.select_level')}
+                </label>
+                <select
+                    className="w-full p-2 border rounded"
+                    value={level}
+                    onChange={(e) => setLevel(e.target.value)}
+                >
+                    <option value="">{t('curriculum.select_level')}</option>
+                    <option value="ordinary">{t('curriculum.ordinary_level')}</option>
+                    <option value="advanced">{t('curriculum.advanced_level')}</option>
+                </select>
             </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+
+            {/* Subject Selection */}
+            {level && (
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                        {t('curriculum.select_subject')}
+                    </label>
+                    <select
+                        className="w-full p-2 border rounded"
+                        value={subject}
+                        onChange={(e) => setSubject(e.target.value)}
+                    >
+                        <option value="">{t('curriculum.select_subject')}</option>
+                        {subjects.map((sub) => (
+                            <option key={sub.id} value={sub.id}>
+                                {sub.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            )}
+
+            {/* Topics List */}
+            {subject && (
+                <div className="mb-6">
+                    <h2 className="text-xl font-semibold mb-4">{t('curriculum.topics')}</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {topics.map((topic) => (
+                            <div
+                                key={topic.id}
+                                className={`p-4 border rounded cursor-pointer ${
+                                    selectedTopic?.id === topic.id ? 'bg-blue-50 border-blue-500' : ''
+                                }`}
+                                onClick={() => setSelectedTopic(topic)}
+                            >
+                                <h3 className="font-medium">{topic.name}</h3>
+                                <p className="text-sm text-gray-600">{topic.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Recommended Videos */}
+            {selectedTopic && (
+                <div className="mt-8">
+                    <h2 className="text-xl font-semibold mb-4">
+                        {t('curriculum.recommended_videos')} - {selectedTopic.name}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {videos.map((video) => (
+                            <div key={video.id} className="border rounded overflow-hidden">
+                                <img
+                                    src={video.thumbnail}
+                                    alt={video.title}
+                                    className="w-full h-48 object-cover"
+                                />
+                                <div className="p-4">
+                                    <h3 className="font-medium mb-2">{video.title}</h3>
+                                    <p className="text-sm text-gray-600 mb-2">{video.channelTitle}</p>
+                                    <a
+                                        href={`https://www.youtube.com/watch?v=${video.id}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-500 hover:text-blue-700"
+                                    >
+                                        {t('curriculum.watch_video')}
+                                    </a>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Loading State */}
+            {loading && (
+                <div className="text-center py-4">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+                </div>
+            )}
+
+            {/* Error State */}
+            {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    {error}
+                </div>
+            )}
+        </div>
+    );
+};
 
 export default Curriculum; 
