@@ -31,36 +31,55 @@ const AITutor = () => {
     return (
         <>
             {/* Floating AI Button */}
-            <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200 z-50"
-                aria-label={t('ai.open')}
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+            <div className="fixed bottom-8 right-8 z-50">
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    className="flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                    aria-label={t('ai.open')}
                 >
-                    <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    />
-                </svg>
-            </button>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                        />
+                    </svg>
+                    <span className="font-semibold">{t('ai.title')}</span>
+                </button>
+            </div>
 
             {/* AI Chat Interface */}
             {isOpen && (
-                <div className="fixed bottom-24 right-8 w-96 bg-white rounded-lg shadow-xl z-50">
-                    <div className="p-4 border-b border-gray-200">
+                <div className="fixed bottom-24 right-8 w-96 bg-white rounded-lg shadow-xl z-50 transform transition-all duration-300">
+                    <div className="p-4 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
                         <div className="flex justify-between items-center">
-                            <h3 className="text-lg font-semibold text-gray-800">{t('ai.title')}</h3>
+                            <div className="flex items-center space-x-2">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-6 w-6"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                                    />
+                                </svg>
+                                <h3 className="text-lg font-semibold">{t('ai.title')}</h3>
+                            </div>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="text-gray-500 hover:text-gray-700"
+                                className="text-white hover:text-gray-200"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +123,7 @@ const AITutor = () => {
                             <button
                                 type="submit"
                                 disabled={isLoading || !question.trim()}
-                                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-opacity duration-200"
                             >
                                 {isLoading ? (
                                     <svg
