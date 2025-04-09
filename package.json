@@ -1,1 +1,18 @@
- 
+{
+  "name": "open-access-learn",
+  "version": "1.0.0",
+  "description": "Open Access Learning Platform for Cameroon Education System",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "test": "cd frontend && npm test",
+    "eject": "cd frontend && npm run eject"
+  },
+  "author": "",
+  "license": "ISC"
+} 
