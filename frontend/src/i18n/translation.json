@@ -1,0 +1,9 @@
+{
+  "ai": {
+    "title": "AI Tutor",
+    "open": "Open AI Tutor",
+    "placeholder": "Ask me anything about your studies...",
+    "send": "Send",
+    "error": "Sorry, I couldn't process your question. Please try again."
+  }
+} 
