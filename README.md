@@ -1,26 +1,36 @@
 # Open Access Learn
 
-An open-source learning platform for programming and technology education.
+An open-source bilingual (English/French) learning platform focused on GCE Ordinary and Advanced Level curriculum for Cameroonian students.
+
+## Features
+
+- 📚 Complete GCE OL & AL curriculum coverage
+- 👤 Student accounts with email confirmation
+- 📥 Past questions archive with detailed answers
+- 📈 Progress tracking and gamification
+- 🔁 Bilingual support (English 🇬🇧 + French 🇫🇷)
+- 📱 Mobile-friendly Progressive Web App
+- 🎯 Interactive lessons with quizzes and hints
 
 ## Project Structure
 
 ```
 open-access-learn/
-├── frontend/               # React/Svelte frontend
-│   ├── public/            # Static assets
-│   ├── src/              # Source code
-│   └── tailwind.config.js # Tailwind CSS configuration
-├── backend/               # Rust or FastAPI backend
-│   ├── src/              # Source code
-│   └── Cargo.toml / main.py # Dependencies and entry point
-├── content/              # Markdown-based lesson files
-│   ├── rust/            # Rust programming lessons
-│   ├── html/            # HTML/CSS lessons
-│   └── index.yaml       # Content index
-├── db/                   # Database schema & migrations
-├── scripts/             # Setup, deploy, test scripts
-├── .github/workflows/   # CI/CD configurations
-└── README.md            # Project documentation
+├── frontend/                 # React app with routing & auth
+├── backend/                  # Rust (Axum) backend
+├── content/
+│   ├── ordinary_level/      # OL curriculum
+│   │   ├── sciences/        # Science subjects
+│   │   └── arts/           # Arts subjects
+│   └── advanced_level/      # AL curriculum
+│       ├── sciences/        # Science subjects
+│       └── arts/           # Arts subjects
+├── questions/               # Past question uploads
+├── i18n/                    # Language translation files
+├── db/                      # PostgreSQL schema & migrations
+├── scripts/                 # Setup, deploy, test scripts
+├── .github/workflows/       # CI/CD configurations
+└── README.md
 ```
 
 ## Getting Started
@@ -28,7 +38,7 @@ open-access-learn/
 ### Prerequisites
 
 - Node.js (for frontend)
-- Rust or Python (for backend)
+- Rust (for backend)
 - PostgreSQL (for database)
 - Git
 
@@ -37,7 +47,7 @@ open-access-learn/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/chojuninengu/open-access-learn.git
+   git clone https://github.com/yourusername/open-access-learn.git
    cd open-access-learn
    ```
 
@@ -53,23 +63,19 @@ open-access-learn/
 
    ```bash
    cd backend
-   # For Rust:
    cargo build
    cargo run
-   # For Python:
-   pip install -r requirements.txt
-   python main.py
    ```
 
 4. Set up the database:
    ```bash
    cd db
-   # Run migrations
+   psql -U postgres -f schema.sql
    ```
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+We welcome contributions to help improve the platform! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
 
 ## License
 
