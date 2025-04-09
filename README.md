@@ -37,7 +37,7 @@ open-access-learn/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/open-access-learn.git
+   git clone https://github.com/chojuninengu/open-access-learn.git
    cd open-access-learn
    ```
 
