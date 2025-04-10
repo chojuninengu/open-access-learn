@@ -13,7 +13,7 @@ An open-source bilingual (English/French) learning platform focused on GCE Ordin
 - 🎯 Interactive lessons with quizzes and hints
 
 ## Project Structure
-
+ 
 ```
 open-access-learn/
 ├── frontend/                 # React app with routing & auth
