@@ -22,51 +22,52 @@ export const curriculumService = {
         try {
             if (!YOUTUBE_API_KEY) {
                 // Return mock video data if no API key is available
-                return mockData.videos[topic] || [
-                    {
-                        id: 'mock-1',
-                        title: 'Sample Video 1',
-                        description: 'This is a sample video about ' + topic,
-                        thumbnail: 'https://via.placeholder.com/320x180.png',
-                        channelTitle: 'MINESEC Distance Learning',
-                        embedUrl: 'https://www.youtube.com/embed/8IlzKri08kk',
-                        duration: '10:00',
-                        viewCount: '1K views'
-                    }
-                ];
+                return mockData.videos[topic] || [];
             }
 
-            // First, get the channel's uploads playlist
-            const channelResponse = await axios.get('https://www.googleapis.com/youtube/v3/channels', {
-                params: {
-                    part: 'contentDetails',
-                    id: MINESEC_CHANNEL_ID,
-                    key: YOUTUBE_API_KEY
-                }
-            });
-
-            const uploadsPlaylistId = channelResponse.data.items[0].contentDetails.relatedPlaylists.uploads;
-
-            // Then search within the channel's uploads
+            // Search across all of YouTube for educational content
             const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
                     part: 'snippet',
-                    playlistId: uploadsPlaylistId,
-                    q: `${topic} ${level} level`,
+                    q: `${topic} ${level} education tutorial lesson`,
                     type: 'video',
-                    maxResults: 10,
+                    videoCategoryId: '27', // Education category
+                    relevanceLanguage: 'en',
+                    maxResults: 20,
+                    order: 'relevance',
+                    safeSearch: 'strict',
                     key: YOUTUBE_API_KEY
                 }
             });
 
-            return response.data.items.map(item => ({
-                id: item.id.videoId,
-                title: item.snippet.title,
-                description: item.snippet.description,
-                thumbnail: item.snippet.thumbnails.medium.url,
-                channelTitle: item.snippet.channelTitle,
-                embedUrl: `https://www.youtube.com/embed/${item.id.videoId}`
-            }));
+            // Get video statistics (views, duration) for all videos
+            const videoIds = response.data.items.map(item => item.id.videoId).join(',');
+            const statsResponse = await axios.get('https://www.googleapis.com/youtube/v3/videos', {
+                params: {
+                    part: 'statistics,contentDetails',
+                    id: videoIds,
+                    key: YOUTUBE_API_KEY
+                }
+            });
+
+            // Combine video data with statistics
+            return response.data.items.map((item, index) => {
+                const stats = statsResponse.data.items[index];
+                const duration = stats?.contentDetails?.duration || 'N/A';
+                const viewCount = stats?.statistics?.viewCount || '0';
+
+                return {
+                    id: item.id.videoId,
+                    title: item.snippet.title,
+                    description: item.snippet.description,
+                    thumbnail: item.snippet.thumbnails.medium.url,
+                    channelTitle: item.snippet.channelTitle,
+                    embedUrl: `https://www.youtube.com/embed/${item.id.videoId}`,
+                    duration: duration.replace('PT', '').toLowerCase(),
+                    viewCount: `${parseInt(viewCount).toLocaleString()} views`,
+                    publishedAt: new Date(item.snippet.publishedAt).toLocaleDateString()
+                };
+            });
         } catch (error) {
             console.error('Error fetching YouTube videos:', error);
             throw error;
