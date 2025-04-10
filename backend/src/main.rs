@@ -77,6 +77,20 @@ fn init_gce_subjects() -> Vec<SubjectInfo> {
             compulsory: false
         },
         SubjectInfo {
+            code: "0515".to_string(),
+            name: "CHEMISTRY".to_string(),
+            level: "O Level".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["Theory".to_string(), "Practical".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Atomic Structure".to_string(), "Chemical Reactions".to_string(), "Organic Chemistry".to_string()],
+                resources: vec!["GCE Board Chemistry Syllabus".to_string()],
+                description: "Study of matter, its properties, and reactions".to_string()
+            }),
+            compulsory: false
+        },
+        SubjectInfo {
             code: "0520".to_string(),
             name: "ENGLISH LANGUAGE".to_string(),
             level: "O Level".to_string(),
@@ -87,6 +101,34 @@ fn init_gce_subjects() -> Vec<SubjectInfo> {
                 topics: vec!["Grammar".to_string(), "Composition".to_string()],
                 resources: vec!["GCE Board English Syllabus".to_string()],
                 description: "Core language skills and communication".to_string()
+            }),
+            compulsory: true
+        },
+        SubjectInfo {
+            code: "0525".to_string(),
+            name: "FRENCH".to_string(),
+            level: "O Level".to_string(),
+            papers: vec!["Paper 1 (Oral)".to_string(), "Paper 2 (Written)".to_string()],
+            sections: vec!["Oral Communication".to_string(), "Written Expression".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Grammar".to_string(), "Vocabulary".to_string(), "Communication".to_string()],
+                resources: vec!["GCE Board French Syllabus".to_string()],
+                description: "French language proficiency and communication".to_string()
+            }),
+            compulsory: true
+        },
+        SubjectInfo {
+            code: "0530".to_string(),
+            name: "MATHEMATICS".to_string(),
+            level: "O Level".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["Pure Mathematics".to_string(), "Statistics".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Algebra".to_string(), "Geometry".to_string(), "Trigonometry".to_string(), "Statistics".to_string()],
+                resources: vec!["GCE Board Mathematics Syllabus".to_string()],
+                description: "Essential mathematical concepts and problem-solving".to_string()
             }),
             compulsory: true
         },
@@ -110,23 +152,54 @@ fn init_gce_subjects() -> Vec<SubjectInfo> {
                         ExamPaper { name: "Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
                         ExamPaper { name: "Paper 3".to_string(), paper_type: "Practical".to_string() },
                     ],
-                },
-                ExamYear {
-                    year: "2024".to_string(),
-                    session: "Mock".to_string(),
-                    papers: vec![
-                        ExamPaper { name: "NW Mock Paper 1".to_string(), paper_type: "Theory".to_string() },
-                        ExamPaper { name: "NW Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                        ExamPaper { name: "CASPA Mock Paper 1".to_string(), paper_type: "Theory".to_string() },
-                        ExamPaper { name: "CASPA Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                        ExamPaper { name: "CASPA Mock Paper 3".to_string(), paper_type: "Practical".to_string() },
-                    ],
                 }
             ],
             syllabus: Some(Syllabus {
                 topics: vec!["Advanced Cell Biology".to_string(), "Genetics".to_string(), "Ecology".to_string()],
                 resources: vec!["GCE Board A-Level Biology Syllabus".to_string()],
                 description: "Advanced study of biological systems and processes".to_string()
+            }),
+            compulsory: false
+        },
+        SubjectInfo {
+            code: "0715".to_string(),
+            name: "CHEMISTRY".to_string(),
+            level: "A Level".to_string(),
+            papers: vec!["Paper 1".to_string(), "Paper 2".to_string(), "Paper 3".to_string()],
+            sections: vec!["Theory".to_string(), "Structured Questions".to_string(), "Practical".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Physical Chemistry".to_string(), "Organic Chemistry".to_string(), "Inorganic Chemistry".to_string()],
+                resources: vec!["GCE Board A-Level Chemistry Syllabus".to_string()],
+                description: "Advanced study of chemical principles and reactions".to_string()
+            }),
+            compulsory: false
+        },
+        SubjectInfo {
+            code: "0720".to_string(),
+            name: "PHYSICS".to_string(),
+            level: "A Level".to_string(),
+            papers: vec!["Paper 1".to_string(), "Paper 2".to_string(), "Paper 3".to_string()],
+            sections: vec!["Theory".to_string(), "Structured Questions".to_string(), "Practical".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Mechanics".to_string(), "Electricity".to_string(), "Modern Physics".to_string()],
+                resources: vec!["GCE Board A-Level Physics Syllabus".to_string()],
+                description: "Advanced study of matter, energy, and their interactions".to_string()
+            }),
+            compulsory: false
+        },
+        SubjectInfo {
+            code: "0725".to_string(),
+            name: "MATHEMATICS".to_string(),
+            level: "A Level".to_string(),
+            papers: vec!["Pure Mathematics".to_string(), "Mechanics".to_string(), "Statistics".to_string()],
+            sections: vec!["Pure Mathematics".to_string(), "Applied Mathematics".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Calculus".to_string(), "Algebra".to_string(), "Vectors".to_string(), "Statistics".to_string()],
+                resources: vec!["GCE Board A-Level Mathematics Syllabus".to_string()],
+                description: "Advanced mathematical concepts and applications".to_string()
             }),
             compulsory: false
         },
