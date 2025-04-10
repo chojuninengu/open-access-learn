@@ -33,66 +33,70 @@ struct ExamPaper {
     paper_type: String,
 }
 
-const GCE_SUBJECTS: &[SubjectInfo] = &[
-    SubjectInfo {
-        code: "0710".to_string(),
-        name: "BIOLOGY".to_string(),
-        papers: vec!["Paper 1".to_string(), "Paper 2".to_string(), "Paper 3".to_string()],
-        sections: vec!["Theory".to_string(), "Structured Questions".to_string(), "Practical".to_string()],
-        years: vec![
-            ExamYear {
-                year: "2024".to_string(),
-                session: "June".to_string(),
-                papers: vec![
-                    ExamPaper { name: "Paper 1".to_string(), paper_type: "Theory".to_string() },
-                    ExamPaper { name: "Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                    ExamPaper { name: "Paper 3".to_string(), paper_type: "Practical".to_string() },
-                ],
-            },
-            ExamYear {
-                year: "2024".to_string(),
-                session: "Mock".to_string(),
-                papers: vec![
-                    ExamPaper { name: "NW Mock Paper 1".to_string(), paper_type: "Theory".to_string() },
-                    ExamPaper { name: "NW Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                    ExamPaper { name: "CASPA Mock Paper 1".to_string(), paper_type: "Theory".to_string() },
-                    ExamPaper { name: "CASPA Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                    ExamPaper { name: "CASPA Mock Paper 3".to_string(), paper_type: "Practical".to_string() },
-                ],
-            },
-            ExamYear {
-                year: "2023".to_string(),
-                session: "June".to_string(),
-                papers: vec![
-                    ExamPaper { name: "Paper 1".to_string(), paper_type: "Theory".to_string() },
-                    ExamPaper { name: "Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                    ExamPaper { name: "Paper 3".to_string(), paper_type: "Practical".to_string() },
-                ],
-            },
-        ],
-    },
-    SubjectInfo {
-        code: "0505".to_string(),
-        name: "ACCOUNTING".to_string(),
-        papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
-        sections: vec!["OHADA Approach".to_string(), "IAS/IFRS Approach".to_string()],
-        years: vec![],
-    },
-    SubjectInfo {
-        code: "0510".to_string(),
-        name: "BIOLOGY".to_string(),
-        papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
-        sections: vec!["Section A (Compulsory)".to_string(), "Section B (Choice)".to_string()],
-        years: vec![],
-    },
-    SubjectInfo {
-        code: "0515".to_string(),
-        name: "CHEMISTRY".to_string(),
-        papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
-        sections: vec!["Section A".to_string(), "Section B (Alternative to Practical)".to_string(), "Section C".to_string()],
-        years: vec![],
-    }
-];
+fn init_gce_subjects() -> Vec<SubjectInfo> {
+    vec![
+        // A-Level Biology
+        SubjectInfo {
+            code: "0710".to_string(),
+            name: "BIOLOGY".to_string(),
+            papers: vec!["Paper 1".to_string(), "Paper 2".to_string(), "Paper 3".to_string()],
+            sections: vec!["Theory".to_string(), "Structured Questions".to_string(), "Practical".to_string()],
+            years: vec![
+                ExamYear {
+                    year: "2024".to_string(),
+                    session: "June".to_string(),
+                    papers: vec![
+                        ExamPaper { name: "Paper 1".to_string(), paper_type: "Theory".to_string() },
+                        ExamPaper { name: "Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
+                        ExamPaper { name: "Paper 3".to_string(), paper_type: "Practical".to_string() },
+                    ],
+                },
+                ExamYear {
+                    year: "2024".to_string(),
+                    session: "Mock".to_string(),
+                    papers: vec![
+                        ExamPaper { name: "NW Mock Paper 1".to_string(), paper_type: "Theory".to_string() },
+                        ExamPaper { name: "NW Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
+                        ExamPaper { name: "CASPA Mock Paper 1".to_string(), paper_type: "Theory".to_string() },
+                        ExamPaper { name: "CASPA Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
+                        ExamPaper { name: "CASPA Mock Paper 3".to_string(), paper_type: "Practical".to_string() },
+                    ],
+                },
+                ExamYear {
+                    year: "2023".to_string(),
+                    session: "June".to_string(),
+                    papers: vec![
+                        ExamPaper { name: "Paper 1".to_string(), paper_type: "Theory".to_string() },
+                        ExamPaper { name: "Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
+                        ExamPaper { name: "Paper 3".to_string(), paper_type: "Practical".to_string() },
+                    ],
+                },
+            ],
+        },
+        // O-Level subjects
+        SubjectInfo {
+            code: "0505".to_string(),
+            name: "ACCOUNTING".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["OHADA Approach".to_string(), "IAS/IFRS Approach".to_string()],
+            years: vec![],
+        },
+        SubjectInfo {
+            code: "0510".to_string(),
+            name: "BIOLOGY".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["Section A (Compulsory)".to_string(), "Section B (Choice)".to_string()],
+            years: vec![],
+        },
+        SubjectInfo {
+            code: "0515".to_string(),
+            name: "CHEMISTRY".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["Section A".to_string(), "Section B (Alternative to Practical)".to_string(), "Section C".to_string()],
+            years: vec![],
+        }
+    ]
+}
 
 #[derive(Debug, Serialize, Deserialize)]
 struct AIContext {
@@ -118,7 +122,8 @@ async fn ai_chat(req: web::Json<AIChatRequest>) -> impl Responder {
     };
 
     // Find subject info
-    let subject_info = GCE_SUBJECTS.iter().find(|s| 
+    let gce_subjects = init_gce_subjects();
+    let subject_info = gce_subjects.iter().find(|s| 
         s.name.to_lowercase() == req.subject.to_lowercase() || 
         s.code.to_lowercase() == req.subject.to_lowercase()
     );
