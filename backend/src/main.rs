@@ -125,24 +125,43 @@ async fn ai_chat(req: web::Json<AIChatRequest>) -> impl Responder {
 
     let response = match subject_info {
         Some(info) => {
-            match info.code.as_str() {
+            let base_response = match info.code.as_str() {
+                "0710" => {
+                    let mut years_info = String::new();
+                    for year in &info.years {
+                        years_info.push_str(&format!("\n{}{}:\n", 
+                            year.session,
+                            year.year
+                        ));
+                        for paper in &year.papers {
+                            years_info.push_str(&format!("- {}\n", paper.name));
+                        }
+                    }
+                    format!(
+                        "For GCE A Level Biology ({}): {}\n\nExamination Structure:\n\n- Paper 1: Theory\n- Paper 2: Structured Questions\n- Paper 3: Practical\n\nAvailable Papers:{}",
+                        info.code, info.name, years_info
+                    )
+                },
                 "0505" => format!(
-                    "For GCE O Level Accounting ({}): {}\n\nThis subject follows both OHADA and IAS/IFRS approaches. Key points:\n\n- Paper 1: 50 MCQs (40% weighting, 1h30)\n- Paper 2: 8 questions (60% weighting, 3h)\n  - Section A: OHADA Approach (Choose 3/5 questions)\n  - Section B: IAS/IFRS Approach (Choose 2/3 questions)\n\nYour question: {}",
-                    info.code, info.name, req.question
+                    "For GCE O Level Accounting ({}): {}\n\nThis subject follows both OHADA and IAS/IFRS approaches. Key points:\n\n- Paper 1: 50 MCQs (40% weighting, 1h30)\n- Paper 2: 8 questions (60% weighting, 3h)\n  - Section A: OHADA Approach (Choose 3/5 questions)\n  - Section B: IAS/IFRS Approach (Choose 2/3 questions)",
+                    info.code, info.name
                 ),
                 "0510" => format!(
-                    "For GCE O Level Biology ({}): {}\n\nThe examination structure:\n\n- Paper 1: 50 MCQs covering the whole syllabus\n- Paper 2: 7 essay questions\n  - Section A: 3 compulsory questions\n  - Section B: Choose 2 from 4 questions\n\nYour question: {}",
-                    info.code, info.name, req.question
+                    "For GCE O Level Biology ({}): {}\n\nThe examination structure:\n\n- Paper 1: 50 MCQs covering the whole syllabus\n- Paper 2: 7 essay questions\n  - Section A: 3 compulsory questions\n  - Section B: Choose 2 from 4 questions",
+                    info.code, info.name
                 ),
                 "0515" => format!(
-                    "For GCE O Level Chemistry ({}): {}\n\nExamination format:\n\n- Paper 1: 50 MCQs\n- Paper 2: 10 questions in 3 sections\n  - Section A: Theory\n  - Section B: Alternative to Practical (compulsory)\n  - Section C: Essay questions\n\nYour question: {}",
-                    info.code, info.name, req.question
+                    "For GCE O Level Chemistry ({}): {}\n\nExamination format:\n\n- Paper 1: 50 MCQs\n- Paper 2: 10 questions in 3 sections\n  - Section A: Theory\n  - Section B: Alternative to Practical (compulsory)\n  - Section C: Essay questions",
+                    info.code, info.name
                 ),
                 _ => format!(
-                    "For GCE O Level {} ({}): {}\n\nThis subject follows the MINESEC approved syllabus. Please refer to the official GCE Board guidelines for examination structure.",
-                    info.name, info.code, req.question
+                    "For GCE {} ({}): {}\n\nThis subject follows the MINESEC approved syllabus. Please refer to the official GCE Board guidelines for examination structure.",
+                    level_response, info.name, info.code
                 )
-            }
+            };
+            format!("{}
+
+Your question: {}", base_response, req.question)
         },
         None => format!(
             "Subject not found in the GCE O Level curriculum. Available subjects include Accounting (0505), Biology (0510), Chemistry (0515), etc. Please specify a valid subject code or name."
