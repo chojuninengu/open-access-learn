@@ -15,9 +15,19 @@ struct AIChatRequest {
 struct SubjectInfo {
     code: String,
     name: String,
+    level: String,
     papers: Vec<String>,
     sections: Vec<String>,
     years: Vec<ExamYear>,
+    syllabus: Option<Syllabus>,
+    compulsory: bool
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct Syllabus {
+    topics: Vec<String>,
+    resources: Vec<String>,
+    description: String
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -34,11 +44,61 @@ struct ExamPaper {
 }
 
 fn init_gce_subjects() -> Vec<SubjectInfo> {
-    vec![
-        // A-Level Biology
+    let mut subjects = Vec::new();
+    
+    // O-Level Subjects
+    subjects.extend(vec![
+        SubjectInfo {
+            code: "0505".to_string(),
+            name: "ACCOUNTING".to_string(),
+            level: "O Level".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["OHADA Approach".to_string(), "IAS/IFRS Approach".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Basic Accounting".to_string(), "Financial Statements".to_string()],
+                resources: vec!["OHADA Guidelines".to_string()],
+                description: "Covers both OHADA and IAS/IFRS approaches".to_string()
+            }),
+            compulsory: false
+        },
+        SubjectInfo {
+            code: "0510".to_string(),
+            name: "BIOLOGY".to_string(),
+            level: "O Level".to_string(),
+            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
+            sections: vec!["Section A (Compulsory)".to_string(), "Section B (Choice)".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Cell Biology".to_string(), "Human Biology".to_string()],
+                resources: vec!["GCE Board Biology Syllabus".to_string()],
+                description: "Comprehensive study of living organisms".to_string()
+            }),
+            compulsory: false
+        },
+        SubjectInfo {
+            code: "0520".to_string(),
+            name: "ENGLISH LANGUAGE".to_string(),
+            level: "O Level".to_string(),
+            papers: vec!["Paper 1 (Essay)".to_string(), "Paper 2 (Comprehension)".to_string()],
+            sections: vec!["Writing".to_string(), "Reading".to_string()],
+            years: vec![],
+            syllabus: Some(Syllabus {
+                topics: vec!["Grammar".to_string(), "Composition".to_string()],
+                resources: vec!["GCE Board English Syllabus".to_string()],
+                description: "Core language skills and communication".to_string()
+            }),
+            compulsory: true
+        },
+        // Add more O-Level subjects here
+    ]);
+
+    // A-Level Subjects
+    subjects.extend(vec![
         SubjectInfo {
             code: "0710".to_string(),
             name: "BIOLOGY".to_string(),
+            level: "A Level".to_string(),
             papers: vec!["Paper 1".to_string(), "Paper 2".to_string(), "Paper 3".to_string()],
             sections: vec!["Theory".to_string(), "Structured Questions".to_string(), "Practical".to_string()],
             years: vec![
@@ -61,41 +121,19 @@ fn init_gce_subjects() -> Vec<SubjectInfo> {
                         ExamPaper { name: "CASPA Mock Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
                         ExamPaper { name: "CASPA Mock Paper 3".to_string(), paper_type: "Practical".to_string() },
                     ],
-                },
-                ExamYear {
-                    year: "2023".to_string(),
-                    session: "June".to_string(),
-                    papers: vec![
-                        ExamPaper { name: "Paper 1".to_string(), paper_type: "Theory".to_string() },
-                        ExamPaper { name: "Paper 2".to_string(), paper_type: "Structured Questions".to_string() },
-                        ExamPaper { name: "Paper 3".to_string(), paper_type: "Practical".to_string() },
-                    ],
-                },
+                }
             ],
+            syllabus: Some(Syllabus {
+                topics: vec!["Advanced Cell Biology".to_string(), "Genetics".to_string(), "Ecology".to_string()],
+                resources: vec!["GCE Board A-Level Biology Syllabus".to_string()],
+                description: "Advanced study of biological systems and processes".to_string()
+            }),
+            compulsory: false
         },
-        // O-Level subjects
-        SubjectInfo {
-            code: "0505".to_string(),
-            name: "ACCOUNTING".to_string(),
-            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
-            sections: vec!["OHADA Approach".to_string(), "IAS/IFRS Approach".to_string()],
-            years: vec![],
-        },
-        SubjectInfo {
-            code: "0510".to_string(),
-            name: "BIOLOGY".to_string(),
-            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
-            sections: vec!["Section A (Compulsory)".to_string(), "Section B (Choice)".to_string()],
-            years: vec![],
-        },
-        SubjectInfo {
-            code: "0515".to_string(),
-            name: "CHEMISTRY".to_string(),
-            papers: vec!["Paper 1 (MCQ)".to_string(), "Paper 2 (Theory)".to_string()],
-            sections: vec!["Section A".to_string(), "Section B (Alternative to Practical)".to_string(), "Section C".to_string()],
-            years: vec![],
-        }
-    ]
+        // Add more A-Level subjects here
+    ]);
+
+    subjects
 }
 
 #[derive(Debug, Serialize, Deserialize)]
