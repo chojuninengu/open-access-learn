@@ -1,11 +1,36 @@
 use actix_cors::Cors;
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use serde::{Deserialize, Serialize};
 use std::env;
+
+#[derive(Debug, Serialize, Deserialize)]
+struct AIChatRequest {
+    question: String,
+    subject: String,
+    level: String,
+    context: AIContext,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct AIContext {
+    platform: String,
+    curriculum: String,
+}
 
 async fn health_check() -> impl Responder {
     HttpResponse::Ok().json(serde_json::json!({
         "status": "ok",
         "message": "Server is running"
+    }))
+}
+
+async fn ai_chat(req: web::Json<AIChatRequest>) -> impl Responder {
+    // For now, return a mock response
+    HttpResponse::Ok().json(serde_json::json!({
+        "answer": format!("Here's what I know about {} for {} level: This is a sample response about the topic. The question was: {}", 
+            req.subject, req.level, req.question),
+        "confidence": 0.95,
+        "sources": ["Sample Educational Resource"]
     }))
 }
 
@@ -41,6 +66,10 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .wrap(cors)
             .route("/health", web::get().to(health_check))
+            .service(
+                web::scope("/api")
+                    .route("/ai/chat", web::post().to(ai_chat))
+            )
     })
     .bind(("0.0.0.0", port))?
     .run()
