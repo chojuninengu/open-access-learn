@@ -1,4 +1,4 @@
-# Open Access Learn
+ # Open Access Learn
 
 An open-source bilingual (English/French) learning platform focused on GCE Ordinary and Advanced Level curriculum for Cameroonian students.
 
